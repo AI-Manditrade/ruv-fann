@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["compress_bytes","compress_data","decompress_bytes","decompress_data"],"mod":["analyze"],"struct":["CompressedReader","CompressedWriter","CompressionConfig"]};

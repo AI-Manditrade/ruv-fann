@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["CascadeError"],"struct":["CandidateNeuron","CascadeBuilder","CascadeConfig","CascadeMetrics","CascadeNetwork","CascadeState","CascadeTrainer","CascadeTrainingRecord","CascadeTrainingResult"]};
