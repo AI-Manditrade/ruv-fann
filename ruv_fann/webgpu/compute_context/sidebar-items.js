@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["apply_activation_cpu"],"struct":["ComputeContext","ComputePerformanceStats","DaaCoordinationMetrics","DeviceCapabilities","GpuMemoryManager","MatrixDims","OptimizationEvent","PerformanceStats","PerformanceTracker","TrackerStats"]};

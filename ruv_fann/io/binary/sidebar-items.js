@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["read_binary","write_binary"],"mod":["inspect"],"struct":["BinaryConfig","BinaryReader","BinaryWriter"]};

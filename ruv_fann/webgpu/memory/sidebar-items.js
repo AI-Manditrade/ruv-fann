@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["BufferSize"],"mod":["webgpu_memory"],"struct":["BufferHandle","BufferInfo","CpuMemoryManager","EnhancedGpuMemoryManager","EnhancedMemoryStats","GpuMemoryConfig","GpuMemoryManager","MemoryManagerStats","MemoryStats","OptimizationResult"]};
