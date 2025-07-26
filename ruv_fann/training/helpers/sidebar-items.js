@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["apply_updates_to_network","calculate_gradients","forward_propagate","network_to_simple","sigmoid","sigmoid_derivative"],"struct":["SimpleNetwork"]};

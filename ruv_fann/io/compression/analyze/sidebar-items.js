@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["compression_ratio","space_savings","test_compression"],"struct":["CompressionStats"]};

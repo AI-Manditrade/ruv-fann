@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["ActivationFunction"],"struct":["CpuSimdOps","ParallelTraining","SimdConfig"],"trait":["SimdMatrixOps"]};

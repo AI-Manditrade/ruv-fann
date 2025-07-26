@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["estimate_batch_memory","optimal_batch_size"]};

@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Advanced WebGPU compute backend implementation"><title>ruv_fann::webgpu::webgpu_backend - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../../../static.files/rustdoc-1a91846b.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="ruv_fann" data-themes="" data-resource-suffix="" data-rustdoc-version="1.88.0 (6b00bc388 2025-06-23)" data-channel="1.88.0" data-search-js="search-f7877310.js" data-settings-js="settings-5514c975.js" ><script src="../../../static.files/storage-4e99c027.js"></script><script defer src="../sidebar-items.js"></script><script defer src="../../../static.files/main-7ef8a74a.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-893ab5e7.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-6580c154.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-044be391.svg"></head><body class="rustdoc mod"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle" title="show sidebar"></button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../../../ruv_fann/index.html">ruv_<wbr>fann</a><span class="version">0.1.6</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">Module webgpu_<wbr>backend</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#features" title="Features">Features</a></li><li><a href="#usage" title="Usage">Usage</a></li><li><a href="#architecture" title="Architecture">Architecture</a></li><li><a href="#performance-characteristics" title="Performance Characteristics">Performance Characteristics</a></li></ul><h3><a href="#reexports">Module Items</a></h3><ul class="block"><li><a href="#reexports" title="Re-exports">Re-exports</a></li><li><a href="#modules" title="Modules">Modules</a></li></ul></section><div id="rustdoc-modnav"><h2><a href="../index.html">In ruv_<wbr>fann::<wbr>webgpu</a></h2></div></div></nav><div class="sidebar-resizer"></div><main><div class="width-limiter"><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="../../index.html">ruv_fann</a>::<wbr><a href="../index.html">webgpu</a></div><h1>Module <span>webgpu_backend</span><button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../../../src/ruv_fann/webgpu/webgpu_backend.rs.html#1-1570">Source</a> </span></div><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Advanced WebGPU compute backend implementation</p>
+<p>This module provides a production-ready WebGPU-accelerated compute backend for neural network operations.
+It includes advanced optimizations from staging, DAA compatibility, and comprehensive performance monitoring.</p>
+<h2 id="features"><a class="doc-anchor" href="#features">§</a>Features</h2>
+<ul>
+<li><strong>GPU Acceleration</strong>: High-performance matrix operations using WebGPU compute shaders</li>
+<li><strong>DAA Integration</strong>: Seamless compatibility with Decentralized Autonomous Agents</li>
+<li><strong>ComputeContext Bridge</strong>: Direct <code>Network&lt;T&gt;</code> integration for performance</li>
+<li><strong>Pipeline Caching</strong>: Advanced shader pipeline caching and optimization</li>
+<li><strong>Memory Pooling</strong>: Intelligent GPU buffer management with automatic cleanup</li>
+<li><strong>Performance Monitoring</strong>: Real-time performance tracking and optimization</li>
+<li><strong>Intelligent Fallback</strong>: Automatic degradation to optimized CPU implementations</li>
+<li><strong>Thread Safety</strong>: All operations are thread-safe and can be used across multiple threads</li>
+<li><strong>Error Resilience</strong>: Comprehensive error handling with detailed diagnostics</li>
+</ul>
+<h2 id="usage"><a class="doc-anchor" href="#usage">§</a>Usage</h2>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>ruv_fann::webgpu::WebGPUBackend;
+<span class="kw">use </span>ruv_fann::webgpu::ComputeBackend;
+
+<span class="comment">// Initialize WebGPU backend asynchronously
+</span><span class="kw">let </span>backend = WebGPUBackend::&lt;f32&gt;::initialize().<span class="kw">await</span><span class="question-mark">?</span>;
+
+<span class="comment">// Perform matrix-vector multiplication with optimal backend selection
+</span><span class="kw">let </span>matrix = <span class="macro">vec!</span>[<span class="number">1.0</span>, <span class="number">2.0</span>, <span class="number">3.0</span>, <span class="number">4.0</span>]; <span class="comment">// 2x2 matrix
+</span><span class="kw">let </span>vector = <span class="macro">vec!</span>[<span class="number">5.0</span>, <span class="number">6.0</span>];
+<span class="kw">let </span>result = backend.matrix_vector_multiply(<span class="kw-2">&amp;</span>matrix, <span class="kw-2">&amp;</span>vector, <span class="number">2</span>, <span class="number">2</span>)<span class="question-mark">?</span>;</code></pre></div>
+<h2 id="architecture"><a class="doc-anchor" href="#architecture">§</a>Architecture</h2>
+<p>The WebGPU backend is structured around four main components:</p>
+<ol>
+<li><strong>Compute Backend</strong>: Core mathematical operations (matrix multiplication, activation functions)</li>
+<li><strong>Memory Manager</strong>: Advanced GPU buffer allocation, pooling, and optimization</li>
+<li><strong>Shader Manager</strong>: WGSL shader compilation, caching, and pipeline management</li>
+<li><strong>ComputeContext</strong>: Bridge for <code>Network&lt;T&gt;</code> integration and DAA compatibility</li>
+</ol>
+<h2 id="performance-characteristics"><a class="doc-anchor" href="#performance-characteristics">§</a>Performance Characteristics</h2>
+<ul>
+<li><strong>Matrix Operations</strong>: ~10-100x speedup for large matrices (&gt;1000x1000)</li>
+<li><strong>Batch Processing</strong>: Excellent scaling with batch size</li>
+<li><strong>Memory Bandwidth</strong>: Utilizes full GPU memory bandwidth (200-1000+ GB/s)</li>
+<li><strong>Activation Functions</strong>: SIMD-optimized GPU kernels for all supported functions</li>
+<li><strong>Pipeline Caching</strong>: 50-90% reduction in shader compilation overhead</li>
+<li><strong>Memory Pooling</strong>: 80% reduction in allocation overhead</li>
+</ul>
+</div></details><h2 id="reexports" class="section-header">Re-exports<a href="#reexports" class="anchor">§</a></h2><dl class="item-table reexports"><dt id="reexport.WebGPUBackend"><code>pub use webgpu_impl::<a class="struct" href="webgpu_impl/struct.WebGPUBackend.html" title="struct ruv_fann::webgpu::webgpu_backend::webgpu_impl::WebGPUBackend">WebGPUBackend</a>;</code></dt></dl><h2 id="modules" class="section-header">Modules<a href="#modules" class="anchor">§</a></h2><dl class="item-table"><dt><a class="mod" href="webgpu_impl/index.html" title="mod ruv_fann::webgpu::webgpu_backend::webgpu_impl">webgpu_<wbr>impl</a></dt></dl></section></div></main></body></html>

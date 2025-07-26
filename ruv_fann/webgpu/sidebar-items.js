@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["get_memory_capabilities","has_enhanced_memory_features","has_wasm_gpu_bridge"],"mod":["autonomous_gpu_resource_manager","backend","buffer_pool","compute_context","device","error","fallback","kernel_optimizer","memory","performance_monitor","pipeline_cache","pressure_monitor","shaders","webgpu_backend"],"struct":["MemoryCapabilities"]};

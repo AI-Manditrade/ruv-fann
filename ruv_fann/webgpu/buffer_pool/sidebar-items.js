@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["BufferCategory","CircuitBreakerState","DaaRecommendationType","MemoryPressure"],"struct":["AdvancedBufferPool","BufferTierPool","DaaRecommendation","GlobalStatisticsSnapshot","GpuBuffer","PoolGlobalStatistics","PoolStatisticsSnapshot","PoolTierConfig","PressureCircuitBreaker","TierStatistics","TierStatisticsSnapshot"]};

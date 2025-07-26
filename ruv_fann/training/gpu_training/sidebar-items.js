@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["get_gpu_capabilities","is_gpu_available"],"struct":["GpuAdam","GpuAdamW","GpuBatchBackprop","GpuPerformanceStats"]};

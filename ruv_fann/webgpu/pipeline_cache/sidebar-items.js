@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":["BindGroupLayout","CacheStats","CompilationStats","ComputePipeline","PipelineCache"]};

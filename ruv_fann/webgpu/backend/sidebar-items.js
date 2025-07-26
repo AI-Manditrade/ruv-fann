@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["BackendType","MatrixSize","OperationType"],"struct":["BackendCapabilities","BackendSelector","ComputeProfile","CpuBackend","SimdBackend"],"trait":["ComputeBackend","MemoryManager","VectorOps"]};

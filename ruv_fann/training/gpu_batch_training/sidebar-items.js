@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["batch_forward_with_activations","gpu_batch_train_step"],"struct":["BatchGpuTrainer"]};
